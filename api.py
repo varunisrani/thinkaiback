@@ -11,16 +11,22 @@ import os
 from datetime import datetime
 
 # Import coordinators
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-from src.script_ingestion.coordinator import ScriptIngestionCoordinator
-from src.character_breakdown.coordinator import CharacterBreakdownCoordinator
-from src.scheduling.coordinator import SchedulingCoordinator
-from src.budgeting.coordinator import BudgetingCoordinator
-from src.storyboard.coordinator import StoryboardCoordinator
-from src.one_liner.agents.one_linear_agent import OneLinerAgent
+try:
+    # Try relative imports first (for deployment)
+    from .src.script_ingestion.coordinator import ScriptIngestionCoordinator
+    from .src.character_breakdown.coordinator import CharacterBreakdownCoordinator
+    from .src.scheduling.coordinator import SchedulingCoordinator
+    from .src.budgeting.coordinator import BudgetingCoordinator
+    from .src.storyboard.coordinator import StoryboardCoordinator
+    from .src.one_liner.agents.one_linear_agent import OneLinerAgent
+except ImportError:
+    # Fall back to absolute imports (for local development)
+    from src.script_ingestion.coordinator import ScriptIngestionCoordinator
+    from src.character_breakdown.coordinator import CharacterBreakdownCoordinator
+    from src.scheduling.coordinator import SchedulingCoordinator
+    from src.budgeting.coordinator import BudgetingCoordinator
+    from src.storyboard.coordinator import StoryboardCoordinator
+    from src.one_liner.agents.one_linear_agent import OneLinerAgent
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -493,7 +499,10 @@ async def generate_storyboard_batch_frontend(request: dict):
 @app.get("/api/config/model")
 async def get_model_config():
     """Get current model configuration."""
-    from src.base_config import get_model_config
+    try:
+        from .src.base_config import get_model_config
+    except ImportError:
+        from src.base_config import get_model_config
     return {"success": True, "data": get_model_config()}
 
 if __name__ == "__main__":
