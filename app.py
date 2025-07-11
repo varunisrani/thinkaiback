@@ -4,6 +4,8 @@ import os
 from datetime import datetime, timedelta, date
 import json
 import asyncio
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from src.script_ingestion.coordinator import ScriptIngestionCoordinator
 from src.character_breakdown.coordinator import CharacterBreakdownCoordinator
 from src.scheduling.coordinator import SchedulingCoordinator
