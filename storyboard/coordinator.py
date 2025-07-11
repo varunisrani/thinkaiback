@@ -3,7 +3,7 @@ import json
 import os
 import logging
 from datetime import datetime
-from ..base_config import AGENT_INSTRUCTIONS, get_model_config
+from base_config import AGENT_INSTRUCTIONS, get_model_config
 from google import genai
 from google.genai import types
 
