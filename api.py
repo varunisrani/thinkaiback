@@ -72,8 +72,9 @@ class ScheduleRequest(BaseModel):
 class OneLinerRequest(BaseModel):
     scene_descriptions: List[str]
 
-# Health check endpoint
+# Health check endpoints
 @app.get("/")
+@app.head("/")
 async def root():
     return {
         "message": "SD1 Film Production AI System API",
@@ -92,6 +93,7 @@ async def root():
     }
 
 @app.get("/health")
+@app.head("/health")
 async def health_check():
     """Comprehensive health check for all system components."""
     try:
@@ -494,4 +496,25 @@ async def get_model_config():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)
+    import signal
+    import sys
+    
+    def signal_handler(sig, frame):
+        logger.info("Received shutdown signal")
+        sys.exit(0)
+    
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+    
+    try:
+        uvicorn.run(
+            app, 
+            host="0.0.0.0", 
+            port=8000, 
+            reload=False,
+            log_level="info",
+            access_log=True
+        )
+    except Exception as e:
+        logger.error(f"Server error: {e}")
+        sys.exit(1)
