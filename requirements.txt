@@ -1,0 +1,59 @@
+# Core Web Framework
+fastapi
+uvicorn
+pydantic
+python-dotenv
+starlette
+
+# Google AI/ML Dependencies
+google-genai
+google-generativeai
+
+# Data Processing
+numpy
+pandas
+networkx
+geopy
+
+# PDF and File Processing
+PyPDF2
+fpdf
+pathlib2
+
+# Visualization and UI
+plotly
+matplotlib
+altair
+pillow
+qrcode
+
+# Web and HTTP
+httpx
+httpx-sse
+tenacity
+
+# Image Generation
+replicate
+
+# Development and Testing
+pytest
+pytest-asyncio
+black
+watchdog
+
+# Utility Libraries
+python-dateutil
+pytz
+typing-extensions
+attrs
+cachetools
+colorama
+tqdm
+GitPython
+toml
+setuptools
+
+# System and Async
+aiofiles
+aiohttp
+asyncio-mqtt
