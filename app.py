@@ -6,16 +6,13 @@ import json
 import asyncio
 import sys
 
-# Fix Python path for imports
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 # Import coordinators
-from src.script_ingestion.coordinator import ScriptIngestionCoordinator
-from src.character_breakdown.coordinator import CharacterBreakdownCoordinator
-from src.scheduling.coordinator import SchedulingCoordinator
-from src.budgeting.coordinator import BudgetingCoordinator
-from src.storyboard.coordinator import StoryboardCoordinator
-from src.one_liner.agents.one_linear_agent import OneLinerAgent
+from script_ingestion.coordinator import ScriptIngestionCoordinator
+from character_breakdown.coordinator import CharacterBreakdownCoordinator
+from scheduling.coordinator import SchedulingCoordinator
+from budgeting.coordinator import BudgetingCoordinator
+from storyboard.coordinator import StoryboardCoordinator
+from one_liner.agents.one_linear_agent import OneLinerAgent
 import logging
 import plotly.express as px
 import plotly.graph_objects as go

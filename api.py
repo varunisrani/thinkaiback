@@ -10,17 +10,13 @@ import logging
 import os
 from datetime import datetime
 
-# Fix Python path for imports
-import sys
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 # Import coordinators
-from src.script_ingestion.coordinator import ScriptIngestionCoordinator
-from src.character_breakdown.coordinator import CharacterBreakdownCoordinator
-from src.scheduling.coordinator import SchedulingCoordinator
-from src.budgeting.coordinator import BudgetingCoordinator
-from src.storyboard.coordinator import StoryboardCoordinator
-from src.one_liner.agents.one_linear_agent import OneLinerAgent
+from script_ingestion.coordinator import ScriptIngestionCoordinator
+from character_breakdown.coordinator import CharacterBreakdownCoordinator
+from scheduling.coordinator import SchedulingCoordinator
+from budgeting.coordinator import BudgetingCoordinator
+from storyboard.coordinator import StoryboardCoordinator
+from one_liner.agents.one_linear_agent import OneLinerAgent
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -493,7 +489,7 @@ async def generate_storyboard_batch_frontend(request: dict):
 @app.get("/api/config/model")
 async def get_model_config():
     """Get current model configuration."""
-    from src.base_config import get_model_config
+    from base_config import get_model_config
     return {"success": True, "data": get_model_config()}
 
 if __name__ == "__main__":
