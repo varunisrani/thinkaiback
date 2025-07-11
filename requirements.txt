@@ -8,6 +8,7 @@ starlette
 # Google AI/ML Dependencies
 google-genai
 google-generativeai
+google-adk
 
 # Data Processing
 numpy
